@@ -1,0 +1,55 @@
+@startuml DiagramClassHotel
+
+class Admin {
+    -id: bigInt
+    +nama: string
+    +username: string
+    +password: string
+    +level: enum
+    +rememberToken()
+    +timestamps()
+}
+
+class Kamar {
+    -id: bigInt
+    +nama_kamar: string
+    +foto_kamar: string
+    +jum_kamar: int
+    +harga_kamar: int
+    +deskripsi_kamar: int
+    -timestamps: false
+}
+
+class FasilitasKamar {
+    -id: bigInt
+    +kamar_id: bigInt
+    +nama_fasilitas_kamar: string
+    -timestamps: false
+}
+
+class FasilitasHotel {
+    -id: bigInt
+    +nama_fasilitas_hotel: string
+    +foto_fasilitas_hotel: string
+    +deskripsi_fasilitas_hotel: string
+    -timestamps: false
+}
+
+class Pemesanan {
+    -id: bigInt
+    +Kamar_id: bigInt
+    +tanggal_checkin: date
+    +tanggal_checkout: date
+    +jum_kamar_dipesan: int
+    +nama_pemesan: string
+    +email_pemesan: string
+    +no_hp: string
+    +nama_tamu: string
+    +status: enum
+    +timestamps()
+}
+
+Kamar *-- FasilitasKamar
+Kamar O-- Pemesanan
+
+@enduml
